@@ -45,7 +45,7 @@ users.methods.generateToken = function() {
     role: this.role,
   };
   
-  return jwt.sign(token, process.env.SECRET);
+  return jwt.sign(token, process.env.SECRET, { expiresIn: '10s' });
 };
 
 module.exports = mongoose.model('users', users);
