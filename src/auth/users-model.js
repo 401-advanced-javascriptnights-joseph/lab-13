@@ -4,12 +4,29 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const usedTokens = new Set();
+require('./roles-models');
 
 const users = new mongoose.Schema({
   username: {type:String, required:true, unique:true},
   password: {type:String, required:true},
   email: {type: String},
   role: {type: String, default:'user', enum: ['admin','editor','user']},
+}, {toObject: {virtuals: true}, toJSON: {virtuals:true}});
+
+users.virtual('acl', {
+  ref: 'roles',
+  localField: 'role',
+  foreignField: 'role',
+  justOne: true,
+});
+
+users.pre('findOne', function() {
+  try {
+    this.populate('acl');
+  }
+  catch(e) {
+    throw new Error(e.message);
+  }
 });
 
 users.pre('save', function(next) {
@@ -43,14 +60,18 @@ users.methods.comparePassword = function(password) {
     .then( valid => valid ? this : null);
 };
 
+users.methods.can = function(capability) {
+  return this.acl.capabilities.includes(capability);
+};
+
 users.methods.generateToken = function() {
   
   let token = {
     id: this._id,
-    role: this.role,
+    role: this.role, //add role to toke
   };
   
-  return jwt.sign(token, process.env.SECRET, { expiresIn: '60s' });
+  return jwt.sign(token, process.env.SECRET, { expiresIn: '99999999999999s' });
 };
 
 module.exports = mongoose.model('users', users);

@@ -1,6 +1,6 @@
 # LAB - 13
 
-## 
+## Authorization
 
 ### Author: Joseph Hangarter & Alvian Joseph
 
@@ -10,8 +10,6 @@
 
 #### Documentation
 * [api docs](http://xyz.com) (API servers)
-* [jsdoc](http://xyz.com) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
 
 ### Modules
 #### `index.js` - starts app; `app.js` required in
@@ -31,7 +29,6 @@
   * `function _authBasic(str)`
   * `function _authenticate(user)`
   * `function _authError()`
-### `users-model.js`
   * `users.pre('save', function(next)`
   * `users.statics.authenticateToken = function(token)`
   * `users.statics.authenticateBasic = function(auth)`
@@ -47,13 +44,13 @@
 #### Running the app
 * `nodemon` -  monitors for any changes in your source and automatically restart your server
 * `mongo` - database
-* `echo '{"username": "joseph", "password": "joseph"}' | http post :3000/signup` - syntax for signing up
+* `echo '{"username": "entername", "password": "enter"}' | http post :3000/signup` - syntax for signing up
 * `http post :3000/signin -a joseph:joseph` - syntax to sign in and provides key
 * `http post :3000/signin "authorization:bearer ENTERKEYHEREhereasdsadsadas` syntax for authorization bearer
 * `db.users.find().pretty();` in mongo to find generated key
   
 #### Tests
-* `npm test` - to run jest test
+* `npm test` - to run jest test 
 
 #### UML
 Link to an image of the UML for your application and response to events
