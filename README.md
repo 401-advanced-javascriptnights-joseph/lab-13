@@ -8,9 +8,6 @@
 * [submission PR](http://xyz.com)
 * [travis](http://xyz.com)
 
-#### Documentation
-* [api docs](http://xyz.com) (API servers)
-
 ### Modules
 #### `index.js` - starts app; `app.js` required in
 #### `app.js` - `app.use()` for `404.js`, `500.js`, and `router.js`; required in: express, cors, morgan 
@@ -52,5 +49,3 @@
 #### Tests
 * `npm test` - to run jest test 
 
-#### UML
-Link to an image of the UML for your application and response to events
