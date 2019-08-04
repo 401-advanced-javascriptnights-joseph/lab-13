@@ -5,8 +5,8 @@
 ### Author: Joseph Hangarter & Alvian Joseph
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
+* [submission PR](https://github.com/401-advanced-javascriptnights-joseph/lab-13/pull/4)
+* [travis]([![Build Status](https://travis-ci.com/401-advanced-javascriptnights-joseph/lab-13.svg?branch=master)](https://travis-ci.com/401-advanced-javascriptnights-joseph/lab-13))
 
 ### Modules
 #### `index.js` - starts app; `app.js` required in
